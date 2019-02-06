@@ -1,0 +1,4 @@
+module.exports = {
+    INVALID_PARAMS: "INVALID_PARAMS",
+    DATA_NOT_FOUND: "DATA_NOT_FOUND"
+};
