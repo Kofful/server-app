@@ -83,6 +83,7 @@ module.exports.getAllUsers = function (req, res) {
     let users;
     User.find({}, (req, res) => {
             users = res;
+            console.log(users);
         })
         .then(
             () => {
@@ -95,16 +96,16 @@ module.exports.getAllUsers = function (req, res) {
 };
 
 module.exports.getUserById = function (req, res, next) {
-    let users;
-    User.find({}, (req, res) => {
-        users = res;
-    })
+    User.findById(req.params.id)
         .then(
-            () => {
-                res.json(users[parseInt(req.params.id) - 1]);
+            (user) => {
+				console.log(user);
+				if(user)
+                res.json(user);
             })
         .catch(
             (err) => {
+				console.log(err);
                 res.json(err);
             });
 };

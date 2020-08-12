@@ -27,13 +27,11 @@ module.exports.getAllProjects = function (req, res) {
 };
 
 module.exports.getProjectById = function (req, res, next) {
-    let projects;
-    Project.find({}, (req, res) => {
-        projects = res;
-    })
+    Project.findById(req.params.id)
         .then(
-            () => {
-                res.json(projects[parseInt(req.params.id) - 1]);
+            project => {
+                console.log(project);
+                res.json(project);
             })
         .catch(
             (err) => {
